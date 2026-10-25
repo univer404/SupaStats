@@ -9,7 +9,7 @@ SupaStats converts the supplied statistics Skript into a Paper/Purpur plugin for
 - Toggle the GUI using `settings.gui-enabled` in `config.yml`
 - Tracks kills, deaths, placed blocks, broken blocks, and mobs killed
 - YAML persistence in `stats.yml` and cached offline placeholders in `offline.yml`
-- PlaceholderAPI: `%skstatistics_kills%`, `%skstatistics_deaths%`, `%skstatistics_blocks_placed%`, `%skstatistics_blocks_broken%`, `%skstatistics_mobs_killed%`
+- PlaceholderAPI: `%statistics_kills%`, `%statistics_deaths%`, `%statistics_blocks_placed%`, `%statistics_blocks_broken%`, `%statistics_mobs_killed%`
 - RGB/MiniMessage colors and legacy ampersand colors; italics are disabled by default
 - Java 21; targets Paper/Purpur 1.21.11
 
