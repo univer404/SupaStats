@@ -1,6 +1,8 @@
 package com.supastats;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import net.milkbowl.vault.economy.Economy;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
@@ -49,6 +51,7 @@ public final class SupaStats extends JavaPlugin implements Listener {
     private YamlConfiguration offlineYaml;
     private File guiFile;
     private YamlConfiguration guiYaml;
+    private Economy economy;
     private static final String[] COUNTERS = {"kills", "deaths", "blocks_placed", "blocks_broken", "mobs_killed"};
     private static final Pattern AMPERSAND = Pattern.compile("&([0-9a-fk-or])", Pattern.CASE_INSENSITIVE);
     private static final Map<Character, String> MINI_COLORS = Map.ofEntries(
@@ -73,6 +76,7 @@ public final class SupaStats extends JavaPlugin implements Listener {
         offlineFile = new File(getDataFolder(), "offline.yml");
         offlineYaml = YamlConfiguration.loadConfiguration(offlineFile);
         loadData();
+        setupEconomy();
         Bukkit.getPluginManager().registerEvents(this, this);
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new StatsExpansion(this).register();
@@ -82,6 +86,16 @@ public final class SupaStats extends JavaPlugin implements Listener {
             remember(player);
         }
         getLogger().info("SupaStats enabled.");
+    }
+
+    private void setupEconomy() {
+        if (Bukkit.getPluginManager().getPlugin("Vault") == null) {
+            getLogger().warning("Vault not found; economy balance will show N/A.");
+            return;
+        }
+        RegisteredServiceProvider<Economy> provider = Bukkit.getServicesManager().getRegistration(Economy.class);
+        if (provider != null) economy = provider.getProvider();
+        if (economy == null) getLogger().warning("No Vault economy provider found; install an economy plugin such as EssentialsX Economy or another Vault-compatible economy.");
     }
 
     @Override
@@ -165,9 +179,9 @@ public final class SupaStats extends JavaPlugin implements Listener {
         Map<String, String> saved = new HashMap<>();
         saved.put("money_spent", papi(player, "sellgui_money_spent_formatted"));
         saved.put("money_made", papi(player, "sellgui_money_sell_formatted"));
-        saved.put("money", papi(player, "coinsengine_balance_short_money"));
+        saved.put("money", economy == null ? "N/A" : formatMoney(economy.getBalance(player)));
         saved.put("shards", papi(player, "coinsengine_balance_short_shards"));
-        saved.put("playtime", papi(player, "playtime_timed"));
+        saved.put("playtime", papi(player, "statistic_time_played"));
         offlineValues.put(player.getUniqueId(), saved);
         knownNames.put(player.getUniqueId(), player.getName());
         saveData();
@@ -277,9 +291,9 @@ public final class SupaStats extends JavaPlugin implements Listener {
         for (String key : COUNTERS) result.put(key, format(count(uuid, key)));
         Player online = target.getPlayer();
         Map<String, String> saved = offlineValues.getOrDefault(uuid, Map.of());
-        result.put("money", online == null ? saved.getOrDefault("money", "N/A") : papi(online, "coinsengine_balance_short_money"));
+        result.put("money", economy == null ? "N/A" : formatMoney(economy.getBalance(target)));
         result.put("shards", online == null ? saved.getOrDefault("shards", "N/A") : papi(online, "coinsengine_balance_short_shards"));
-        result.put("playtime", online == null ? saved.getOrDefault("playtime", "N/A") : papi(online, "playtime_timed"));
+        result.put("playtime", online == null ? saved.getOrDefault("playtime", "N/A") : papi(online, "statistic_time_played"));
         result.put("money_spent", online == null ? saved.getOrDefault("money_spent", "N/A") : papi(online, "sellgui_money_spent_formatted"));
         result.put("money_made", online == null ? saved.getOrDefault("money_made", "N/A") : papi(online, "sellgui_money_sell_formatted"));
         return result;
@@ -287,6 +301,10 @@ public final class SupaStats extends JavaPlugin implements Listener {
 
     private String format(long number) {
         return NumberFormat.getNumberInstance(Locale.US).format(number);
+    }
+
+    private String formatMoney(double amount) {
+        return NumberFormat.getNumberInstance(Locale.US).format(amount);
     }
 
     private String replace(String input, Map<String, String> placeholders) {
