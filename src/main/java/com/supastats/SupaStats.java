@@ -12,7 +12,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -179,7 +179,7 @@ public final class SupaStats extends JavaPlugin implements Listener {
     }
 
     @EventHandler public void onDeath(EntityDeathEvent event) {
-        Entity victim = event.getEntity();
+        LivingEntity victim = event.getEntity();
         Player killer = victim.getKiller();
         if (victim instanceof Player player) {
             increment(player.getUniqueId(), "deaths");
