@@ -1,6 +1,6 @@
 # Edit title, item material, slot, display name and lore here.
 # Supported placeholders in item text: {player}, {money}, {shards}, {kills}, {deaths},
-# {playtime}, {blocks_placed}, {blocks_broken}, {mobs_killed}, {money_spent}, {money_made}
+# {playtime}, {blocks_placed}, {blocks_broken}, {mobs_killed}
 items:
   money:
     enabled: true
@@ -59,17 +59,3 @@ items:
     name: "<#00F986>ᴍᴏʙꜱ ᴋɪʟʟᴇᴅ"
     lore:
       - "&fMobs Killed: &7{mobs_killed}"
-  money_spent:
-    enabled: true
-    slot: 20
-    material: GOLD_NUGGET
-    name: "<#00F986>ᴍᴏɴᴇʏ sᴘᴇɴᴛ ᴏɴ sʜᴏᴘ"
-    lore:
-      - "&fMoney Spent: &7{money_spent}"
-  money_made:
-    enabled: true
-    slot: 21
-    material: IRON_NUGGET
-    name: "<#00F986>ᴍᴏɴᴇʏ ᴍᴀᴅᴇ ᴏɴ /sᴇʟʟ"
-    lore:
-      - "&fMoney Made: &7{money_made}"
