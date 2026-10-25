@@ -125,7 +125,7 @@ public final class SupaStats extends JavaPlugin implements Listener {
                 try {
                     UUID uuid = UUID.fromString(id);
                     Map<String, String> values = new HashMap<>();
-                    for (String key : new String[]{"money_spent", "money_made", "money", "shards", "playtime"})
+                    for (String key : new String[]{"money", "shards", "playtime"})
                         values.put(key, offlineYaml.getString("players." + id + "." + key, "N/A"));
                     offlineValues.put(uuid, values);
                 } catch (IllegalArgumentException ignored) { }
@@ -177,8 +177,6 @@ public final class SupaStats extends JavaPlugin implements Listener {
     @EventHandler public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         Map<String, String> saved = new HashMap<>();
-        saved.put("money_spent", papi(player, "sellgui_money_spent_formatted"));
-        saved.put("money_made", papi(player, "sellgui_money_sell_formatted"));
         saved.put("money", economy == null ? "N/A" : formatMoney(economy.getBalance(player)));
         saved.put("shards", papi(player, "coinsengine_balance_short_shards"));
         saved.put("playtime", papi(player, "statistic_time_played"));
@@ -294,8 +292,6 @@ public final class SupaStats extends JavaPlugin implements Listener {
         result.put("money", economy == null ? "N/A" : formatMoney(economy.getBalance(target)));
         result.put("shards", online == null ? saved.getOrDefault("shards", "N/A") : papi(online, "coinsengine_balance_short_shards"));
         result.put("playtime", online == null ? saved.getOrDefault("playtime", "N/A") : papi(online, "statistic_time_played"));
-        result.put("money_spent", online == null ? saved.getOrDefault("money_spent", "N/A") : papi(online, "sellgui_money_spent_formatted"));
-        result.put("money_made", online == null ? saved.getOrDefault("money_made", "N/A") : papi(online, "sellgui_money_sell_formatted"));
         return result;
     }
 
