@@ -76,7 +76,7 @@ public final class SupaStats extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(this, this);
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new StatsExpansion(this).register();
-            getLogger().info("PlaceholderAPI expansion registered: %skstatistics_<stat>%");
+            getLogger().info("PlaceholderAPI expansion registered: %statistics_<stat>%");
         }
         for (Player player : Bukkit.getOnlinePlayers()) {
             remember(player);
@@ -323,7 +323,7 @@ public final class SupaStats extends JavaPlugin implements Listener {
     private static final class StatsExpansion extends PlaceholderExpansion {
         private final SupaStats plugin;
         private StatsExpansion(SupaStats plugin) { this.plugin = plugin; }
-        @Override public String getIdentifier() { return "skstatistics"; }
+        @Override public String getIdentifier() { return "statistics"; }
         @Override public String getAuthor() { return "univer404"; }
         @Override public String getVersion() { return plugin.getPluginMeta().getVersion(); }
         @Override public boolean persist() { return true; }
