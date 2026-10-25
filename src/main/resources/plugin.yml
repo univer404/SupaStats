@@ -4,7 +4,7 @@ main: com.supastats.SupaStats
 api-version: '1.21'
 author: univer404
 description: Player statistics GUI and PlaceholderAPI expansion.
-softdepend: [PlaceholderAPI]
+softdepend: [Vault, PlaceholderAPI]
 commands:
   statistics:
     description: Open player statistics.
