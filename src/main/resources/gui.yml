@@ -1,0 +1,75 @@
+# Edit title, item material, slot, display name and lore here.
+# Supported placeholders in item text: {player}, {money}, {shards}, {kills}, {deaths},
+# {playtime}, {blocks_placed}, {blocks_broken}, {mobs_killed}, {money_spent}, {money_made}
+items:
+  money:
+    enabled: true
+    slot: 10
+    material: EMERALD
+    name: "<#00F986>ᴍᴏɴᴇʏ"
+    lore:
+      - "&fMoney: &7{money}"
+  shards:
+    enabled: true
+    slot: 11
+    material: AMETHYST_SHARD
+    name: "<#00F986>ꜱʜᴀʀᴅꜱ"
+    lore:
+      - "&fShards: &7{shards}"
+  kills:
+    enabled: true
+    slot: 12
+    material: DIAMOND_SWORD
+    name: "<#00F986>ᴋɪʟʟꜱ"
+    lore:
+      - "&fKills: &7{kills}"
+    hide-attributes: true
+  deaths:
+    enabled: true
+    slot: 13
+    material: SKELETON_SKULL
+    name: "<#00F986>ᴅᴇᴀᴛʜꜱ"
+    lore:
+      - "&fDeaths: &7{deaths}"
+  playtime:
+    enabled: true
+    slot: 14
+    material: CLOCK
+    name: "<#00F986>ᴘʟᴀʏᴛɪᴍᴇ"
+    lore:
+      - "&fPlaytime: &7{playtime}"
+  blocks_placed:
+    enabled: true
+    slot: 15
+    material: STONE
+    name: "<#00F986>ʙʟᴏᴄᴋꜱ ᴘʟᴀᴄᴇᴅ"
+    lore:
+      - "&fBlocks Placed: &7{blocks_placed}"
+  blocks_broken:
+    enabled: true
+    slot: 16
+    material: COBBLESTONE
+    name: "<#00F986>ʙʟᴏᴄᴋꜱ ʙʀᴏᴋᴇɴ"
+    lore:
+      - "&fBlocks Broken: &7{blocks_broken}"
+  mobs_killed:
+    enabled: true
+    slot: 19
+    material: ZOMBIE_HEAD
+    name: "<#00F986>ᴍᴏʙꜱ ᴋɪʟʟᴇᴅ"
+    lore:
+      - "&fMobs Killed: &7{mobs_killed}"
+  money_spent:
+    enabled: true
+    slot: 20
+    material: GOLD_NUGGET
+    name: "<#00F986>ᴍᴏɴᴇʏ sᴘᴇɴᴛ ᴏɴ sʜᴏᴘ"
+    lore:
+      - "&fMoney Spent: &7{money_spent}"
+  money_made:
+    enabled: true
+    slot: 21
+    material: IRON_NUGGET
+    name: "<#00F986>ᴍᴏɴᴇʏ ᴍᴀᴅᴇ ᴏɴ /sᴇʟʟ"
+    lore:
+      - "&fMoney Made: &7{money_made}"
