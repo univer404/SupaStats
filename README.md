@@ -16,7 +16,8 @@ SupaStats converts the supplied statistics Skript into a Paper/Purpur plugin for
 ## Dependencies
 
 - Paper or Purpur 1.21.11
-- PlaceholderAPI (optional for custom stats placeholders; required for money, shards, playtime and sell values)
+- Vault and a Vault-compatible economy plugin (required for money balance)
+- PlaceholderAPI (optional for custom stats placeholders; used for shards, playtime and sell values)
 
 ## Install
 
@@ -39,4 +40,4 @@ The JAR is created at `target/SupaStats.jar`.
 
 ## Notes
 
-Offline money/shards/playtime/spending values are snapshots from the player's last quit because PlaceholderAPI expansions generally require an online player context. They refresh on quit and clear on join, matching the supplied Skript's behavior.
+Money balance is read through Vault and the active economy provider. Shards and sell statistics still use their respective PlaceholderAPI expansions. Offline playtime/shards/spending values are snapshots from the player's last quit because PlaceholderAPI expansions generally require an online player context. They refresh on quit and clear on join. Playtime uses `%statistic_time_played%`.
