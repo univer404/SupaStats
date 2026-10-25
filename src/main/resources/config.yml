@@ -1,0 +1,13 @@
+# SupaStats configuration
+# All generated text disables Minecraft's default italics.
+settings:
+  gui-enabled: true
+  gui-title: "<#3F3F3F>ꜱᴛᴀᴛꜱ"
+  other-player-title: "<#3F3F3F>{player} ꜱᴛᴀᴛꜱ"
+  rows: 4
+  number-format: "#,###"
+messages:
+  no-permission: "<#FF5555>ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪssɪᴏɴ."
+  player-not-found: "<#FF5555>ᴛʜᴀᴛ ᴘʟᴀʏᴇʀ ᴅᴏᴇs ɴᴏᴛ ᴇxɪsᴛ."
+  gui-disabled: "<#FF5555>ᴛʜᴇ sᴛᴀᴛs ɢᴜɪ ɪs ᴅɪsᴀʙʟᴇᴅ."
+  player-only: "<#FF5555>ᴏɴʟʏ ᴘʟᴀʏᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ."
