@@ -1,0 +1,19 @@
+name: SupaStats
+version: 1.0.0
+main: com.supastats.SupaStats
+api-version: '1.21'
+author: univer404
+description: Player statistics GUI and PlaceholderAPI expansion.
+softdepend: [PlaceholderAPI]
+commands:
+  statistics:
+    description: Open player statistics.
+    aliases: [stats]
+    usage: /statistics [player]
+permissions:
+  supastats.view:
+    description: View your own statistics.
+    default: true
+  supastats.view.others:
+    description: View another player's statistics.
+    default: op
